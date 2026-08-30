@@ -207,6 +207,27 @@ html[dir="rtl"] .price-ltr, html[dir="rtl"] .rtl-isolate{ unicode-bidi:isolate; 
 .lang-item:hover{background:#f1f5f9;}
 .lang-item.active-lang{background:#e0effe;color:#0038b8;}
 
+/* ── Demo/preview site legal disclaimer ──────────────── */
+.demo-notice-badge{
+  display:flex; align-items:flex-start; gap:10px;
+  background:rgba(245,158,11,.16); border:1.5px solid rgba(251,191,36,.55);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-radius:14px;
+  padding:12px 16px; margin-bottom:22px; max-width:600px;
+  color:#fff; font-size:12.5px; line-height:1.55;
+}
+.demo-notice-badge i{ color:#fbbf24; font-size:16px; margin-top:1px; flex-shrink:0; }
+.demo-notice-badge strong{ color:#fbbf24; }
+.demo-notice-badge button{ color:#fbbf24; text-decoration:underline; font-weight:800; }
+.footer-demo-notice{
+  background:rgba(251,191,36,.1); border:1px solid rgba(251,191,36,.3);
+  border-radius:12px; padding:10px 14px; font-size:12px; color:#fde68a;
+  display:flex; align-items:flex-start; gap:8px; margin-top:14px;
+}
+.footer-demo-notice i{ color:#fbbf24; margin-top:1px; flex-shrink:0; }
+.terms-demo-box{
+  background:#fffbeb; border:1.5px solid #fbbf24; border-radius:14px; padding:16px;
+}
+
 /* ═══════════════════════════════════════════════════════
    RAFFLE — Large glowing promo card (used at multiple scroll points)
 ═══════════════════════════════════════════════════════ */
@@ -421,6 +442,15 @@ html[dir="rtl"] .price-ltr, html[dir="rtl"] .rtl-isolate{ unicode-bidi:isolate; 
 
   <div class="hero-vid-content max-w-7xl mx-auto px-5 sm:px-6 py-20 sm:py-24 w-full">
     <div class="max-w-2xl">
+
+      <div class="demo-notice-badge">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <div>
+          <strong data-i18n="demo_banner_title">Preview / Demo Site</strong>
+          <span data-i18n="demo_banner_text"> — Businesses, deals and prices shown are illustrative examples for demonstration purposes only and do not represent confirmed or existing partnerships.</span>
+          <button onclick="openModal('termsModal');scrollToDemoNotice()" data-i18n="demo_banner_link">Learn more</button>
+        </div>
+      </div>
 
       <div class="inline-flex items-center gap-2 bg-white/15 border border-white/30 rounded-full px-4 py-2 mb-6 sm:mb-8 backdrop-blur-sm">
         <span class="text-sm">🇮🇱</span>
@@ -903,6 +933,10 @@ html[dir="rtl"] .price-ltr, html[dir="rtl"] .rtl-isolate{ unicode-bidi:isolate; 
         <p class="text-sm leading-relaxed" data-i18n="footer_tagline">Live Israel like a local. Your credit card, discounts, rights and community in one place.</p>
         <p class="text-xs mt-3">contact@landly.io · <span data-i18n="footer_location">Tel Aviv, Israel</span></p>
         <p class="text-xs mt-1 text-slate-500" data-i18n="footer_copyright_notice">All rights reserved to Landly Ltd.</p>
+        <div class="footer-demo-notice">
+          <i class="fa-solid fa-circle-info"></i>
+          <span data-i18n="footer_demo_notice">This is a preview/demo website for illustration purposes only. Listed businesses are examples and not confirmed partners.</span>
+        </div>
         <div class="mt-5">
           <div class="text-[11px] font-bold tracking-widest text-slate-500 uppercase mb-2.5" data-i18n="footer_follow">Follow Landly</div>
           <div class="flex items-center gap-2.5">
@@ -962,6 +996,10 @@ html[dir="rtl"] .price-ltr, html[dir="rtl"] .rtl-isolate{ unicode-bidi:isolate; 
   <div class="modal-box">
     <button onclick="closeModal('termsModal')" class="modal-close-btn tap-target flex items-center justify-center absolute top-3 right-3 sm:top-4 sm:right-5 text-slate-400 hover:text-slate-700 text-xl"><i class="fa-solid fa-xmark"></i></button>
     <h2 class="text-xl sm:text-2xl font-black text-slate-900 mb-4 pr-8" data-i18n="terms_title">Terms and Conditions</h2>
+    <div id="demoNoticeSection" class="terms-demo-box mb-6">
+      <h3 class="font-bold text-amber-900 text-base mb-1 flex items-center gap-2"><i class="fa-solid fa-triangle-exclamation text-amber-500"></i> <span data-i18n="terms_demo_h">Important Notice: Preview Website</span></h3>
+      <p class="text-amber-900 text-[13px] leading-relaxed" data-i18n="terms_demo_p">This website is a design and user-experience (UX/UI) demonstration only. It is not yet live for real purchases or payments. The businesses, deals, offers and prices shown throughout this site are illustrative examples used to demonstrate the intended look and functionality of the platform. They do not represent confirmed, existing or contracted partnerships. Landly's official live website is currently in development in parallel with outreach to and agreements with real business partners, and the final list of participating businesses may differ substantially from what is shown here.</p>
+    </div>
     <div class="join-cta-banner mb-6 !py-3 !px-4">
       <div class="flex items-center gap-2.5">
         <i class="fa-solid fa-ticket text-brand text-base flex-shrink-0"></i>
@@ -1633,6 +1671,12 @@ const translations = {
     "sticky_cta_headline": "Ready to save on everything?",
     "sticky_cta_sub": "Join in under 2 minutes",
     "nav_home": "Home",
+    "demo_banner_title": "Preview / Demo Site",
+    "demo_banner_text": " — Businesses, deals and prices shown are illustrative examples for demonstration purposes only and do not represent confirmed or existing partnerships.",
+    "demo_banner_link": "Learn more",
+    "footer_demo_notice": "This is a preview/demo website for illustration purposes only. Listed businesses are examples and not confirmed partners.",
+    "terms_demo_h": "Important Notice: Preview Website",
+    "terms_demo_p": "This website is a design and user-experience (UX/UI) demonstration only. It is not yet live for real purchases or payments. The businesses, deals, offers and prices shown throughout this site are illustrative examples used to demonstrate the intended look and functionality of the platform. They do not represent confirmed, existing or contracted partnerships. Landly's official live website is currently in development in parallel with outreach to and agreements with real business partners, and the final list of participating businesses may differ substantially from what is shown here.",
     "dash_segment_value": "Masa Intern",
     "dash_segment_hint": "Set at registration",
     "dash_segment_toast": "Your traveler type is set during registration to personalize the perks you see."
@@ -1898,6 +1942,12 @@ const translations = {
     "sticky_cta_headline": "Готовы экономить на всём?",
     "sticky_cta_sub": "Регистрация за 2 минуты",
     "nav_home": "Главная",
+    "demo_banner_title": "Демо-сайт / Превью",
+    "demo_banner_text": " — Показанные компании, предложения и цены являются иллюстративными примерами исключительно для демонстрации и не отражают подтверждённое или существующее партнёрство.",
+    "demo_banner_link": "Подробнее",
+    "footer_demo_notice": "Это демонстрационный сайт-превью, созданный исключительно в иллюстративных целях. Указанные компании являются примерами и не являются подтверждёнными партнёрами.",
+    "terms_demo_h": "Важное уведомление: сайт-превью",
+    "terms_demo_p": "Этот веб-сайт представляет собой демонстрацию дизайна и пользовательского опыта (UX/UI) и пока не работает для реальных покупок или платежей. Компании, предложения, акции и цены, показанные на этом сайте, являются иллюстративными примерами, используемыми для демонстрации предполагаемого вида и функциональности платформы. Они не отражают подтверждённые, существующие или заключённые партнёрские соглашения. Официальный действующий сайт Landly в настоящее время находится в разработке параллельно с переговорами и заключением соглашений с реальными деловыми партнёрами, и итоговый список участвующих компаний может существенно отличаться от представленного здесь.",
     "dash_segment_value": "Стажёр Masa",
     "dash_segment_hint": "Указано при регистрации",
     "dash_segment_toast": "Ваш тип путешественника указывается при регистрации, чтобы персонализировать показываемые вам льготы."
@@ -2163,6 +2213,12 @@ const translations = {
     "sticky_cta_headline": "¿Listo para ahorrar en todo?",
     "sticky_cta_sub": "Únete en menos de 2 minutos",
     "nav_home": "Inicio",
+    "demo_banner_title": "Sitio de Vista Previa / Demo",
+    "demo_banner_text": " — Los negocios, ofertas y precios mostrados son ejemplos ilustrativos únicamente con fines de demostración y no representan asociaciones confirmadas o existentes.",
+    "demo_banner_link": "Más información",
+    "footer_demo_notice": "Este es un sitio web de vista previa/demo únicamente con fines ilustrativos. Los negocios mencionados son ejemplos y no son socios confirmados.",
+    "terms_demo_h": "Aviso Importante: Sitio de Vista Previa",
+    "terms_demo_p": "Este sitio web es únicamente una demostración de diseño y experiencia de usuario (UX/UI). Todavía no está activo para compras o pagos reales. Los negocios, ofertas, promociones y precios mostrados en todo este sitio son ejemplos ilustrativos utilizados para demostrar el aspecto y la funcionalidad previstos de la plataforma. No representan asociaciones confirmadas, existentes o contratadas. El sitio web oficial en vivo de Landly se encuentra actualmente en desarrollo, en paralelo con el contacto y los acuerdos con socios comerciales reales, y la lista final de negocios participantes puede diferir sustancialmente de lo que se muestra aquí.",
     "dash_segment_value": "Interno de Masa",
     "dash_segment_hint": "Definido en el registro",
     "dash_segment_toast": "Tu tipo de viajero se define durante el registro para personalizar los beneficios que ves."
@@ -2428,6 +2484,12 @@ const translations = {
     "sticky_cta_headline": "Prêt à économiser sur tout ?",
     "sticky_cta_sub": "Inscrivez-vous en 2 minutes",
     "nav_home": "Accueil",
+    "demo_banner_title": "Site de Démonstration / Aperçu",
+    "demo_banner_text": " — Les entreprises, offres et prix affichés sont des exemples illustratifs à des fins de démonstration uniquement et ne représentent pas de partenariats confirmés ou existants.",
+    "demo_banner_link": "En savoir plus",
+    "footer_demo_notice": "Ceci est un site web de démonstration/aperçu à des fins illustratives uniquement. Les entreprises mentionnées sont des exemples et ne sont pas des partenaires confirmés.",
+    "terms_demo_h": "Avis Important : Site de Démonstration",
+    "terms_demo_p": "Ce site web est uniquement une démonstration de conception et d'expérience utilisateur (UX/UI). Il n'est pas encore actif pour de véritables achats ou paiements. Les entreprises, offres, promotions et prix affichés sur l'ensemble de ce site sont des exemples illustratifs utilisés pour démontrer l'apparence et la fonctionnalité prévues de la plateforme. Ils ne représentent pas de partenariats confirmés, existants ou contractés. Le site web officiel et actif de Landly est actuellement en cours de développement, en parallèle des démarches et accords avec de véritables partenaires commerciaux, et la liste finale des entreprises participantes pourrait différer considérablement de ce qui est présenté ici.",
     "dash_segment_value": "Stagiaire Masa",
     "dash_segment_hint": "Défini à l'inscription",
     "dash_segment_toast": "Votre profil de voyageur est défini lors de l'inscription afin de personnaliser les avantages qui vous sont proposés."
@@ -2693,6 +2755,12 @@ const translations = {
     "sticky_cta_headline": "מוכנים לחסוך על הכל?",
     "sticky_cta_sub": "הצטרפות תוך פחות מ-2 דקות",
     "nav_home": "בית",
+    "demo_banner_title": "אתר תצוגה בלבד (Demo)",
+    "demo_banner_text": " — העסקים, ההטבות והמחירים המוצגים הם דוגמאות להמחשה בלבד ואינם מייצגים שיתופי פעולה מאושרים או קיימים בפועל.",
+    "demo_banner_link": "לפרטים נוספים",
+    "footer_demo_notice": "אתר זה הינו אתר הדגמה (Demo) בלבד לצורך המחשה. העסקים המוצגים הם לדוגמה בלבד ואינם שותפים מאושרים.",
+    "terms_demo_h": "הודעה חשובה: אתר תצוגה בלבד",
+    "terms_demo_p": "אתר זה מהווה הדגמת עיצוב וחוויית משתמש (UX/UI) בלבד, ואינו פעיל לביצוע רכישות או תשלומים אמיתיים בשלב זה. העסקים, ההטבות, ההצעות והמחירים המוצגים באתר הינם דוגמאות להמחשה בלבד, שנועדו להציג את המראה והתפקוד המתוכננים של הפלטפורמה. אין באמור כדי להעיד על שיתופי פעולה מאושרים, קיימים או חתומים בפועל. האתר הרשמי והפעיל של Landly נמצא כעת בפיתוח, במקביל ליצירת קשר עם עסקים אמיתיים ולחתימה על הסכמים איתם, ורשימת העסקים הסופית שתשתתף בפלטפורמה עשויה להיות שונה באופן משמעותי מהמוצג כאן.",
     "dash_segment_value": "מתמחה Masa",
     "dash_segment_hint": "נקבע בהרשמה",
     "dash_segment_toast": "סוג המטייל שלכם נקבע בעת ההרשמה כדי להתאים אישית את ההטבות שאתם רואים."
@@ -2954,6 +3022,14 @@ function scrollToRaffleTerms(){
   setTimeout(()=>{
     const raffleTermsEl = document.getElementById('raffleTermsSection');
     if(raffleTermsEl) raffleTermsEl.scrollIntoView({behavior:'smooth', block:'center'});
+  },150);
+}
+
+/* Scrolls the Terms modal to the "Preview / Demo Website" disclaimer section. */
+function scrollToDemoNotice(){
+  setTimeout(()=>{
+    const demoNoticeEl = document.getElementById('demoNoticeSection');
+    if(demoNoticeEl) demoNoticeEl.scrollIntoView({behavior:'smooth', block:'center'});
   },150);
 }
 
